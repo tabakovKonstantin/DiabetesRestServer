@@ -1,0 +1,13 @@
+{
+  "express": {
+    "port": 3000
+  },
+
+  "mongoose": {
+    "db": "mongodb://localhost/passport-example-auth"
+  },
+
+  "session": {
+    "secret": "SECRET"
+  }
+}
