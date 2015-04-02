@@ -4,6 +4,6 @@
 module.exports = function (app) {
     require("./mongoose");
     require("./express")(app);
-    require("./passport");
+    require("./passport")(app);
 
 };

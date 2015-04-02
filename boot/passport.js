@@ -1,25 +1,29 @@
 /**
- * Created by Константин on 01.04.2015.
+ * Created by ?????????? on 01.04.2015.
  */
 var config = require("nconf");
 var passport = require('passport');
+LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('user');
 
 module.exports = function() {
     passport.use(new LocalStrategy({
             usernameField: 'email',
-            passwordField: 'passwd'
+            passwordField: 'password'
         },
-        function(username, password, done) {
-            User.findOne({ username: username }, function (err, user) {
-                if (err) { return done(err); }
-                if (!user) {
-                    return done(null, false, { message: 'Incorrect username.' });
+        function (username, password, done) {
+            User.findOne({username: username}, function (err, user) {
+                console.log("pasport local str rabotaet nashel", user)
+                if (err) {
+                    return done(err);
                 }
-                //if (!user.validPassword(password)) { //:TODO добавмит метод к схеме исвалид
+                if (!user) {
+                    return done(null, false, {message: 'Incorrect username.'});
+                }
+                //if (!user.validPassword(password)) { //:TODO ???????? ????? ? ????? ???????
                 if (!(password === user.password)) {
-                    return done(null, false, { message: 'Incorrect password.' });
+                    return done(null, false, {message: 'Incorrect password.'});
                 }
                 return done(null, user);
             });

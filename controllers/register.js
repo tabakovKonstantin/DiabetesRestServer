@@ -6,6 +6,10 @@ var User = mongoose.model('user');
 
 module.exports = function(req, res, next) {
     var user = new User({ username: req.body.email, password: req.body.password});
+    console.log(req.body.email, req.body.password)
+    User.findOne({username: "testemail"}, function(err, test){
+        console.log(test);
+    });
     user.save(function(err) {
         return err
             ? next(err)
