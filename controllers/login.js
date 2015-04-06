@@ -4,16 +4,21 @@
 var passport = require('passport');
 
 module.exports = function(req, res, next) {
-    console.log("zdes",req.query, req.body);
     passport.authenticate('local', function(err, user, info) {
-        console.log("zdes1",req.query, req.body);
+        console.log('Принято от клиента для аутификации:' , req.query, req.body);
         if (err) { return next(err); }
-        if (!user) { return res.end("Bad user"); }
+        if (!user) {
+            res.statusCode = 401;
+            //return res.end("Bad user"); }
+            return res.end("bad login"); }
         //if (!user) { return res.redirect('/login'); }
         req.logIn(user, function(err) {
-            if (err) { return next(err); }
+            if (err) {
+                return next(err); }
             //return res.redirect('/users/' + user.username);
-            return res.end("OK login");
+
+            return res.end("Good login");
+            //return res.statusCode = 401;
         });
     })(req, res, next);
     //passport.authenticate('local'),

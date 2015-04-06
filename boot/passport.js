@@ -14,7 +14,7 @@ module.exports = function() {
         },
         function (username, password, done) {
             User.findOne({username: username}, function (err, user) {
-                console.log("pasport local str rabotaet nashel", user)
+                //console.log("pasport local str rabotaet nashel", user)
                 if (err) {
                     return done(err);
                 }

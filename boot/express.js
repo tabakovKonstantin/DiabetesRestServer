@@ -2,7 +2,6 @@
  * Created by Константин on 01.04.2015.
  */
 var config = require("nconf");
-//var bodyParser = require("body-parser")
 var express = require('express');
 var passport = require('passport');
 

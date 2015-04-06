@@ -9,5 +9,9 @@
 
   "session": {
     "secret": "SECRET"
+  },
+
+  "RApache": {
+    "url": "http://192.168.198.137:80/R"
   }
 }
